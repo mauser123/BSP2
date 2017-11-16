@@ -108,15 +108,18 @@ void stps() {
                 file.clear();
                 break; //Datei einlesen 				
         }
-        steps++;
+      steps++;
         cout << "Zeit: " << steps << endl;
+	cout << "Quantum: " << quantum << endl;
+	if(execprozesse.size()>0){
+        cout << "Value: " << execprozesse.front()->value << endl;
+        cout << "CPID: " << execprozesse.front()->pid << endl;}
     }
-    cout << "Value: " << execprozesse.front()->value << endl;
-    //cout<<"Quantum: "<<quantum<<endl;
-    cout << "CPID: " << execprozesse.front()->pid << endl;
-
+    else {		steps++;
+			cout << "Zeit: " << steps << endl;}
+   
+    	
 }
-
 void myhandle(int mysignal) {
     if (mode == true) {
         alarm(1);
