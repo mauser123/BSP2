@@ -110,7 +110,7 @@ void stps() {
         }
       steps++;
         cout << "Zeit: " << steps << endl;
-	cout << "Quantum: " << quantum << endl;
+	//cout << "Quantum: " << quantum << endl;
 	if(execprozesse.size()>0){
         cout << "Value: " << execprozesse.front()->value << endl;
         cout << "CPID: " << execprozesse.front()->pid << endl;}
