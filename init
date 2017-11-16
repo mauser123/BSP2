@@ -2,7 +2,12 @@ S 0
 A 1
 A 2
 A 4
-R file_a.cpp
+R file_a
+A 4
+A 3
+A 2
+A 1
+R file_b
 B
 D 3
 E
