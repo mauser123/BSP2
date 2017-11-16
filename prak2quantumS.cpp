@@ -204,15 +204,18 @@ int main(int argc, char** argv) {
                             file.clear();
                             break; //Datei einlesen 				
                     }
-                    steps++;
-                    cout << "Zeit: " << steps << endl;
-                }
-                cout << "Value: " << execprozesse.front()->value << endl;
-                cout << "Quantum: " << quantum << endl;
-                cout << "CPID: " << execprozesse.front()->pid << endl;
-
-
-            } else if (buf[0] == 'T') {
+                     steps++;
+        cout << "Zeit: " << steps << endl;
+	cout << "Quantum: " << quantum << endl;
+	if(execprozesse.size()>0){
+        cout << "Value: " << execprozesse.front()->value << endl;
+        cout << "CPID: " << execprozesse.front()->pid << endl;}
+    }
+    else {		steps++;
+			cout << "Zeit: " << steps << endl;}
+   
+    	
+} else if (buf[0] == 'T') {
                 string filename;
                 ifstream input("init");
                 string buff;
