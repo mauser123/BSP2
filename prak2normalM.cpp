@@ -56,13 +56,7 @@ list<string> file;
 string tmp;
 
 void stps() {
-    /*if(quantum > 4){
-    execprozesse.push_back(execprozesse.front());
-    execprozesse.pop_front();
-    quantum = 0;
-    cout<<"Quantum :" << quantum<<endl;
-    }
-    else */if (execprozesse.size() > 0) {
+     if (execprozesse.size() > 0) {
         tmp = execprozesse.front()->anweisungen.front();
         cout << tmp << endl;
         execprozesse.front()->anweisungen.pop_front();
@@ -87,10 +81,10 @@ void stps() {
             case 'B':
                 blockedprozesse.push_back(execprozesse.front());
                 execprozesse.pop_front();
-                //quantum = 0;
+               // quantum = 0;
                 break; //Methode um in die Blocked liste zu schieben
             case 'E': execprozesse.pop_front();
-                //quantum = 0;				
+              //  quantum = 0;
                 break; //Beenden des Simulierten prozess
             case 'R': printf("Liesst neue datei ein\n");
                 tmp.erase(0, 2);
@@ -108,18 +102,24 @@ void stps() {
                 file.clear();
                 break; //Datei einlesen 				
         }
-      steps++;
+	steps++;
         cout << "Zeit: " << steps << endl;
 	//cout << "Quantum: " << quantum << endl;
 	if(execprozesse.size()>0){
         cout << "Value: " << execprozesse.front()->value << endl;
         cout << "CPID: " << execprozesse.front()->pid << endl;}
+	/*if (quantum > 4) {
+	execprozesse.push_back(execprozesse.front());
+        execprozesse.pop_front();
+        quantum = 0;
+       }*/
     }
     else {		steps++;
 			cout << "Zeit: " << steps << endl;}
    
     	
 }
+
 void myhandle(int mysignal) {
     if (mode == true) {
         alarm(1);
@@ -131,17 +131,12 @@ void myhandle(int mysignal) {
 int main(int argc, char** argv) {
     int mypipe[2];
     int pipename;
-    //int tmpint;
-
-    //int pid = 1;
     pid_t cpid;
-    //list<Prozess*> execprozesse;
-    //list<Prozess*> blockedprozesse;
     char buf[20];
-    //list<string> file;
+    
     pipename = pipe(mypipe);
     char input; //q m s p
-    //string tmp;
+    
     char buffer[SIZE]; //zur Zeitausgabe
     time_t curtime;
     struct tm *loctime;
@@ -242,7 +237,7 @@ int main(int argc, char** argv) {
                 cout << "SIZE" << execprozesse.size() << endl;
                 file.clear();
                 cout << "File.Size" << file.size() << endl;
-                //quantum =0;					
+               // quantum = 0;
             } else if (buf[0] == 'q') {
                 cout << "Bye!" << endl;
                 cout << "Zeit: " << steps << endl;
@@ -272,4 +267,3 @@ int main(int argc, char** argv) {
 
     return 0;
 }
-
